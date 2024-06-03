@@ -10,7 +10,9 @@
           :key="category"
           class="bg-white shadow-md rounded-lg p-4"
         >
-          <h2 class="text-xl font-semibold mb-2">{{ category }}</h2>
+          <h2 class="text-xl font-semibold mb-2">
+            {{ category }}
+          </h2>
           <ul class="list-disc list-inside">
             <li v-for="item in newsItems" :key="item._id">
               <a :href="item.link" target="_blank">{{ item.name }}</a>
@@ -49,3 +51,10 @@ const groupedNews = computed(() => {
   }, {});
 });
 </script>
+
+<style scoped>
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+</style>

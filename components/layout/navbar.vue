@@ -6,7 +6,7 @@
       <div class="text-white text-lg font-bold">MyLogo</div>
       <div class="space-x-4">
         <a href="/" class="text-gray-300 hover:text-white">Home</a>
-        <a href="#" class="text-gray-300 hover:text-white">Add new</a>
+        <a href="/addNew" class="text-gray-300 hover:text-white">Add new</a>
       </div>
     </div>
   </nav>
