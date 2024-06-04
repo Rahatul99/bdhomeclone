@@ -15,7 +15,13 @@
           </h2>
           <ul class="list-disc list-inside">
             <li v-for="item in newsItems" :key="item._id">
-              <a :href="item.link" target="_blank">{{ item.name }}</a>
+              <NuxtLink
+                :to="item.link"
+                target="_blank"
+                class="hover:bg-green-800 hover:text-white rounded px-2 py-1"
+              >
+                {{ item.name }}
+              </NuxtLink>
             </li>
           </ul>
         </div>
@@ -27,16 +33,15 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useFetch } from "#app";
-import { BaseUrl } from "/utils/index.js";
 
+const config = useRuntimeConfig();
 const newsData = ref([]);
 
-const { data, error } = await useFetch(`${BaseUrl}/news`);
+const { data, error } = await useFetch(`${config.public.BASE_URL}/news`);
 
 if (data.value) {
   newsData.value = data.value;
 }
-
 if (error.value) {
   console.error(error.value);
 }

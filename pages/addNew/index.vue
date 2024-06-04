@@ -48,6 +48,10 @@
 
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const config = useRuntimeConfig();
+const router = useRouter();
 
 const form = ref({
   name: "",
@@ -56,11 +60,24 @@ const form = ref({
 });
 
 const submitForm = () => {
-  console.log("Form submitted:", form.value);
-  // Handle form submission here, e.g., send data to an API
+  useFetch(`${config.public.BASE_URL}/addNew`, {
+    method: "post",
+    body: {
+      name: form.value.name,
+      category: form.value.category,
+      link: form.value.link,
+    },
+  })
+    .then(() => {
+      form.value.name = "";
+      form.value.category = "";
+      form.value.link = "";
+      router.push("/");
+    })
+    .catch((error) => {
+      console.error("Error submitting form:", error);
+    });
 };
 </script>
 
-<style scoped>
-/* Add any additional styles here */
-</style>
+<style scoped></style>

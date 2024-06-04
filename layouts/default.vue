@@ -12,3 +12,7 @@ import Footer from "~/components/layout/footer.vue";
     <Footer />
   </div>
 </template>
+
+<style scoped>
+/* Add your CSS styles here */
+</style>
