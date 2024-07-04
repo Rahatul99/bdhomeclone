@@ -4,6 +4,7 @@ import Footer from "~/components/layout/footer.vue";
 </script>
 
 <template>
+  <NuxtLoadingIndicator color="green" />
   <div class="flex flex-col min-h-screen">
     <Navbar />
     <main class="flex-grow m-5">

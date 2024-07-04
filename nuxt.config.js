@@ -13,4 +13,11 @@ export default defineNuxtConfig({
       BASE_URL: process.env.BASE_URL,
     },
   },
+  modules: ["@pinia/nuxt"],
+  pinia: {
+    autoImport: ["defineStore"],
+  },
+  imports: {
+    dirs: ["./store"],
+  },
 });
