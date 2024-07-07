@@ -487,6 +487,9 @@ const {
   updatedNews,
   deletedNews,
 } = useNewsStore();
+onMounted(() => {
+  fetchNews();
+});
 
 const allNews = computed(() => groupedNews());
 watch(fetchNews, () => {
