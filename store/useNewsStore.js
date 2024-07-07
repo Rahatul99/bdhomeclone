@@ -57,13 +57,16 @@ export const useNewsStore = defineStore("news", () => {
 
   const updatedNews = async (dataForm, id) => {
     try {
-      const response = await fetch(`http://localhost:5001/updateNews/${id}`, {
-        method: "PUT",
-        body: JSON.stringify(dataForm),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `${config.public.BASE_URL}/updateNews/${id}`,
+        {
+          method: "PUT",
+          body: JSON.stringify(dataForm),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const data = await response.json();
       if (!response.ok) {
         console.error("Error updating news:", data);
@@ -77,12 +80,15 @@ export const useNewsStore = defineStore("news", () => {
 
   const deletedNews = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5001/deleteNews/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `${config.public.BASE_URL}/deleteNews/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const data = await response.json();
       if (!response.ok) {
         console.error("Error deleting news", data);
@@ -93,7 +99,6 @@ export const useNewsStore = defineStore("news", () => {
       console.error("Error deleting news:", error);
     }
   };
-  console.log(newsData, "--------newsData----------");
   return {
     fetchNews,
     addNews,

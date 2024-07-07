@@ -2,15 +2,15 @@
   <nav class="bg-gray-800 p-4">
     <div class="container mx-auto flex justify-center items-center">
       <div class="space-x-4">
-        <NuxtLink to="/" class="text-gray-300 hover:text-white">Home</NuxtLink>
+        <NuxtLink to="/" class="text-white hover:text-gray-400">Home</NuxtLink>
         <button
-          class="text-gray-300 hover:text-white"
+          class="text-white hover:text-gray-400"
           @click="toggleAddNewModal()"
         >
           Add new
         </button>
         <button
-          class="text-gray-300 hover:text-white"
+          class="text-white hover:text-gray-400"
           @click="toggleManageModal()"
         >
           Manage
@@ -18,24 +18,21 @@
       </div>
     </div>
   </nav>
+
   <!-- Add New Modal -->
   <div
     id="small-modal"
     tabindex="-1"
     :class="{ hidden: !showAddNewModal }"
-    class="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-x-hidden overflow-y-auto bg-gray-700 bg-opacity-75"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-x-hidden overflow-y-auto bg-gray-900 bg-opacity-75"
   >
     <div class="relative w-full max-w-md max-h-full">
-      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-        <div
-          class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
-        >
-          <h3 class="text-xl font-medium text-gray-900 dark:text-white">
-            Add New Link
-          </h3>
+      <div class="relative bg-white rounded-lg shadow-lg">
+        <div class="flex items-center justify-between p-4 border-b rounded-t">
+          <h3 class="text-xl font-bold text-gray-900">Add New Link</h3>
           <button
             type="button"
-            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            class="text-gray-400 hover:bg-gray-200 rounded-lg text-sm w-8 h-8 flex justify-center items-center"
             @click="toggleAddNewModal"
           >
             <svg
@@ -55,28 +52,30 @@
             </svg>
           </button>
         </div>
-        <div class="p-4 md:p-5 space-y-4">
+        <div class="p-6 space-y-4">
           <form @submit.prevent="submitForm">
             <div class="mb-4">
-              <label for="name" class="block text-gray-700">Name</label>
+              <label for="name" class="block text-gray-700 font-bold"
+                >Name</label
+              >
               <input
                 type="text"
                 id="name"
                 v-model="form.name"
-                class="w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:border-blue-500"
+                class="w-full px-3 py-2 border rounded focus:outline-none focus:border-red-500"
                 required
               />
             </div>
             <div class="mb-4">
               <label
                 for="category"
-                class="block text-gray-700 mb-2 flex justify-between"
+                class="block text-gray-700 font-bold mb-2 flex justify-between"
               >
                 Select a category
                 <button
                   type="button"
                   @click="openCreateCategoryModal"
-                  class="text-blue-500"
+                  class="text-red-700 hover:underline"
                 >
                   Create a category
                 </button>
@@ -85,7 +84,7 @@
                 <select
                   id="category"
                   v-model="form.category"
-                  class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                  class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded focus:outline-none focus:border-red-500"
                   required
                 >
                   <option
@@ -110,19 +109,21 @@
               </div>
             </div>
             <div class="mb-4">
-              <label for="link" class="block text-gray-700">Link</label>
+              <label for="link" class="block text-gray-700 font-bold"
+                >Link</label
+              >
               <input
                 type="url"
                 id="link"
                 v-model="form.link"
-                class="w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:border-blue-500"
+                class="w-full px-3 py-2 border rounded focus:outline-none focus:border-red-500"
                 required
               />
             </div>
             <div class="flex justify-center">
               <button
                 type="submit"
-                class="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 w-full"
+                class="bg-red-700 text-white px-4 py-2 rounded shadow hover:bg-red-800 focus:outline-none w-full"
               >
                 Submit
               </button>
@@ -132,24 +133,21 @@
       </div>
     </div>
   </div>
+
   <!-- Create Category Modal -->
   <div
     id="category-modal"
     tabindex="-1"
     :class="{ hidden: !showCreateCategoryModal }"
-    class="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-x-hidden overflow-y-auto bg-gray-700 bg-opacity-75 transition-opacity duration-700 ease-in-out"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-x-hidden overflow-y-auto bg-gray-900 bg-opacity-75 transition-opacity duration-700 ease-in-out"
   >
     <div class="relative w-full max-w-md max-h-full">
-      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-        <div
-          class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
-        >
-          <h3 class="text-xl font-medium text-gray-900 dark:text-white">
-            Create Category
-          </h3>
+      <div class="relative bg-white rounded-lg shadow-lg">
+        <div class="flex items-center justify-between p-4 border-b rounded-t">
+          <h3 class="text-xl font-bold text-gray-900">Create Category</h3>
           <button
             type="button"
-            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            class="text-gray-400 hover:bg-gray-200 rounded-lg text-sm w-8 h-8 flex justify-center items-center"
             @click="toggleCreateCategoryModal"
           >
             <svg
@@ -169,24 +167,24 @@
             </svg>
           </button>
         </div>
-        <div class="p-4 md:p-5 space-y-4">
+        <div class="p-6 space-y-4">
           <form @submit.prevent="createCategory">
             <div class="mb-4">
-              <label for="categoryName" class="block text-gray-700"
+              <label for="categoryName" class="block text-gray-700 font-bold"
                 >Category Name</label
               >
               <input
                 type="text"
                 id="categoryName"
                 v-model="newCategory.name"
-                class="w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:border-blue-500"
+                class="w-full px-3 py-2 border rounded focus:outline-none focus:border-red-500"
                 required
               />
             </div>
             <div class="flex justify-center">
               <button
                 type="submit"
-                class="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 w-full"
+                class="bg-red-700 text-white px-4 py-2 rounded shadow hover:bg-red-800 focus:outline-none w-full"
               >
                 Create
               </button>
@@ -197,25 +195,19 @@
     </div>
   </div>
 
-  <!-- Manage modal -->
-
-  <!-- Manage modal -->
-  <div
+  <!-- Manage Modal -->
+  <!-- <div
     tabindex="-1"
     :class="{ hidden: !showManageModal }"
-    class="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-x-hidden overflow-y-auto bg-gray-700 bg-opacity-75 transition-opacity duration-700 ease-in-out"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-x-hidden overflow-y-auto bg-gray-900 bg-opacity-75 transition-opacity duration-700 ease-in-out"
   >
     <div class="relative w-full max-w-md max-h-full">
-      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-        <div
-          class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
-        >
-          <h3 class="text-xl font-medium text-gray-900 dark:text-white">
-            Manage News
-          </h3>
+      <div class="relative bg-white rounded-lg shadow-lg">
+        <div class="flex items-center justify-between p-4 border-b rounded-t">
+          <h3 class="text-xl font-bold text-gray-900">Manage News</h3>
           <button
             type="button"
-            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            class="text-gray-400 hover:bg-gray-200 rounded-lg text-sm w-8 h-8 flex justify-center items-center"
             @click="toggleManageModal"
           >
             <svg
@@ -235,14 +227,14 @@
             </svg>
           </button>
         </div>
-        <div class="p-4 md:p-5 space-y-4 max-hight-custom overflow-y-auto">
+        <div class="p-6 space-y-4 max-hight-custom overflow-y-auto">
           <div v-for="(newsItems, category) in allNews" :key="category">
-            <h4 class="text-lg font-medium text-gray-900">{{ category }}</h4>
+            <h4 class="text-lg font-bold text-gray-900">{{ category }}</h4>
             <table class="min-w-full bg-white">
               <thead>
                 <tr>
-                  <th class="py-2 px-4 border-b">Name</th>
-                  <th class="py-2 px-4 border-b">Actions</th>
+                  <th class="py-2 px-4 border-b font-bold">Name</th>
+                  <th class="py-2 px-4 border-b font-bold">Actions</th>
                 </tr>
               </thead>
               <tbody class="text-center">
@@ -269,25 +261,104 @@
         </div>
       </div>
     </div>
+  </div> -->
+
+  <div
+    tabindex="-1"
+    :class="{ hidden: !showManageModal }"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-x-hidden overflow-y-auto bg-gray-900 bg-opacity-75 transition-opacity duration-700 ease-in-out"
+  >
+    <div class="relative w-full max-w-lg max-h-full">
+      <div class="relative bg-white rounded-lg shadow-lg">
+        <div class="flex items-center justify-between p-4 border-b rounded-t">
+          <h3 class="text-xl font-bold text-gray-900">Manage News</h3>
+          <button
+            type="button"
+            class="text-gray-400 hover:bg-gray-200 rounded-lg text-sm w-8 h-8 flex justify-center items-center"
+            @click="toggleManageModal"
+          >
+            <svg
+              class="w-3 h-3"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 14 14"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="p-6 space-y-6 max-hight-custom overflow-y-auto">
+          <div
+            v-for="(newsItems, category) in allNews"
+            :key="category"
+            class="mb-6"
+          >
+            <h4 class="text-lg font-bold text-gray-900 mb-2">{{ category }}</h4>
+            <div class="overflow-hidden border rounded-lg">
+              <table class="min-w-full bg-white">
+                <thead class="bg-gray-800 text-white">
+                  <tr class="flex justify-between w-full">
+                    <th class="py-3 px-4 flex-1 text-left font-semibold">
+                      Name
+                    </th>
+                    <th class="py-3 px-4 flex-1 text-left font-semibold">
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    v-for="(item, index) in newsItems"
+                    :key="index"
+                    class="flex justify-between w-full hover:bg-gray-100"
+                  >
+                    <td class="py-3 px-4 flex-1 border-t border-gray-200">
+                      {{ item.name }}
+                    </td>
+                    <td class="py-3 px-4 flex-1 border-t border-gray-200">
+                      <button
+                        @click="openEditModal(item)"
+                        class="text-blue-600 hover:text-blue-800 font-semibold mr-4"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        @click="deleteNews(item._id)"
+                        class="text-red-600 hover:text-red-800 font-semibold"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Edit Modal -->
   <div
     tabindex="-1"
     :class="{ hidden: !showEditModal }"
-    class="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-x-hidden overflow-y-auto bg-gray-700 bg-opacity-75"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-x-hidden overflow-y-auto bg-gray-900 bg-opacity-75"
   >
     <div class="relative w-full max-w-md max-h-full">
-      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-        <div
-          class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
-        >
-          <h3 class="text-xl font-medium text-gray-900 dark:text-white">
-            Edit News
-          </h3>
+      <div class="relative bg-white rounded-lg shadow-lg">
+        <div class="flex items-center justify-between p-4 border-b rounded-t">
+          <h3 class="text-xl font-bold text-gray-900">Edit News</h3>
           <button
             type="button"
-            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            class="text-gray-400 hover:bg-gray-200 rounded-lg text-sm w-8 h-8 flex justify-center items-center"
             @click="toggleEditModal"
           >
             <svg
@@ -307,44 +378,48 @@
             </svg>
           </button>
         </div>
-        <div class="p-4 md:p-5 space-y-4">
+        <div class="p-6 space-y-4">
           <form @submit.prevent="updateNews()">
             <div class="mb-4">
-              <label for="editName" class="block text-gray-700">Name</label>
+              <label for="editName" class="block text-gray-700 font-bold"
+                >Name</label
+              >
               <input
                 type="text"
                 id="editName"
                 v-model="editForm.name"
-                class="w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:border-blue-500"
+                class="w-full px-3 py-2 border rounded focus:outline-none focus:border-red-500"
                 required
               />
             </div>
             <div class="mb-4">
-              <label for="editCategory" class="block text-gray-700 mb-2">
-                Category
-              </label>
+              <label for="editCategory" class="block text-gray-700 font-bold"
+                >Category</label
+              >
               <input
                 type="text"
                 id="editCategory"
                 v-model="editForm.category"
-                class="w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:border-blue-500"
+                class="w-full px-3 py-2 border rounded focus:outline-none focus:border-red-500"
                 required
               />
             </div>
             <div class="mb-4">
-              <label for="editLink" class="block text-gray-700">Link</label>
+              <label for="editLink" class="block text-gray-700 font-bold"
+                >Link</label
+              >
               <input
                 type="url"
                 id="editLink"
                 v-model="editForm.link"
-                class="w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:border-blue-500"
+                class="w-full px-3 py-2 border rounded focus:outline-none focus:border-red-500"
                 required
               />
             </div>
             <div class="flex justify-center">
               <button
                 type="submit"
-                class="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 w-full"
+                class="bg-red-700 text-white px-4 py-2 rounded shadow hover:bg-red-800 focus:outline-none w-full"
               >
                 Update
               </button>
@@ -413,12 +488,8 @@ const {
   deletedNews,
 } = useNewsStore();
 
-// onMounted(() => {
-//   fetchNews();
-// });
-
 const allNews = computed(() => groupedNews());
-watch(fetchNews(), () => {
+watch(fetchNews, () => {
   allNews.value = groupedNews();
 });
 
