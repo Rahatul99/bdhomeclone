@@ -487,12 +487,12 @@ const {
   updatedNews,
   deletedNews,
 } = useNewsStore();
-onMounted(() => {
-  fetchNews();
-});
+// onMounted(() => {
+//   fetchNews();
+// });
 
 const allNews = computed(() => groupedNews());
-watch(fetchNews, () => {
+watch(fetchNews(), () => {
   allNews.value = groupedNews();
 });
 
